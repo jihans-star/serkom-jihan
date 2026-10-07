@@ -12,7 +12,7 @@ class UpdateekstrakurikulerRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,7 +23,11 @@ class UpdateekstrakurikulerRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'nama_eskul' => ['required', 'string', 'max:40'],
+            'pembina' => ['required', 'string', 'max:40'],
+            'jadwal_latihan' => ['required', 'string', 'max:40'],
+            'deskripsi' => ['required', 'string'],
+            'gambar' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:2048'],
         ];
     }
 }

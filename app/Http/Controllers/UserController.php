@@ -7,101 +7,104 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-
     public function index()
     {
-        $users = User::where('role', 'Operator')->get();
-
-        return view('admin.user', compact('users'));
+        $users = User::latest()->paginate(10);
+        return view('admin.user.index', compact('users'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
-        return view('admin.add_user');
-
+        return view('admin.user.add_user');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
         $request->validate([
             'name' => 'required|string|max:225',
             'username' => 'required|string|max:30|unique:users',
             'password' => 'required|string|min:6',
+            'role' => 'required|in:Admin,Operator',
         ]);
 
         User::create([
             'name' => $request->name,
             'username' => $request->username,
             'password' => bcrypt($request->password),
-            'role' => 'Operator',
+            'role' => $request->role,
+            'status' => 'Aktif',
         ]);
 
-        return redirect()->route('admin.user.index')->with('success','Operator baru berhasil disimpan');
+        return redirect()
+            ->route('admin.user.index')
+            ->with('success', 'Pengelola baru berhasil disimpan');
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(User $user)
     {
-        // Menggunakan view yang sama untuk melihat sekaligus mengedit data
-        return view('admin.show_user', compact('user'));
+        return view('admin.user.show_user', compact('user'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(User $user)
     {
-        //
+        return view('admin.user.show_user', compact('user'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-        public function update(Request $request, User $user)
+    public function update(Request $request, User $user)
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            // Username harus unik, tapi abaikan pengecekan untuk user yang sedang diedit ini sendiri
             'username' => 'required|string|max:30|unique:users,username,' . $user->id,
-            // Password opsional (hanya diisi jika ingin mengganti password baru)
             'password' => 'nullable|string|min:6',
+            'role' => 'required|in:Admin,Operator',
         ]);
 
         $data = [
             'name' => $request->name,
             'username' => $request->username,
+            'role' => $request->role,
         ];
 
-        // Jika kolom password diisi, update passwordnya
         if ($request->filled('password')) {
             $data['password'] = bcrypt($request->password);
         }
 
         $user->update($data);
 
-        return redirect()->route('admin.user.index')->with('success', 'Data operator berhasil diperbarui!');
+        return redirect()
+            ->route('admin.user.index')
+            ->with('success', 'Data pengelola berhasil diperbarui!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+    public function toggleStatus(User $user)
+    {
+        $user->update([
+            'status' => $user->status === 'Aktif'
+                ? 'Nonaktif'
+                : 'Aktif'
+        ]);
+
+        $pesan = $user->status === 'Aktif'
+            ? 'Pengelola berhasil diaktifkan.'
+            : 'Pengelola berhasil dinonaktifkan.';
+
+        return redirect()
+            ->route('admin.user.index')
+            ->with('success', $pesan);
+    }
+
     public function destroy(User $user)
     {
+        if ($user->beritas()->exists()) {
+            return redirect()
+                ->route('admin.user.index')
+                ->with('error', 'Pengelola tidak dapat dihapus karena sudah memiliki berita.');
+        }
+
         $user->delete();
 
-        return redirect()->route('admin.user.index')->with('success', 'Operator berhasil dihapus!');
+        return redirect()
+            ->route('admin.user.index')
+            ->with('success', 'Pengelola berhasil dihapus.');
     }
 }

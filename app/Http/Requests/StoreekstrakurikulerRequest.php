@@ -1,18 +1,17 @@
 <?php
-
 namespace App\Http\Requests;
 
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreekstrakurikulerRequest extends FormRequest
+class StoreEkstrakurikulerRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,7 +22,11 @@ class StoreekstrakurikulerRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'nama_eskul' => ['required', 'string', 'max:40'],
+            'pembina' => ['required', 'string', 'max:40'],
+            'jadwal_latihan' => ['required', 'string', 'max:40'],
+            'deskripsi' => ['required', 'string'],
+            'gambar' => ['required', 'image', 'mimes:jpg,jpeg,png,webp', 'max:2048'],
         ];
     }
 }

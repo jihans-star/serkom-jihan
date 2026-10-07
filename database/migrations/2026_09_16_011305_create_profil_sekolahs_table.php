@@ -12,11 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('profil_sekolahs', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
             $table->string('nama_sekolah',40);
             $table->string('kepala_sekolah',40);
-            $table->string('foto',100);
-            $table->string('logo',100);
+            $table->string('foto',500)->nullable();
+            $table->string('logo',500)->nullable();
+            $table->string('foto_kepala_sekolah',500)->nullable();
             $table->string('npsp',10);
             $table->text('alamat');
             $table->string('kontak',15);

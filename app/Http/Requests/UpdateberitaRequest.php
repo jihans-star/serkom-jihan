@@ -12,7 +12,7 @@ class UpdateberitaRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,7 +23,11 @@ class UpdateberitaRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'judul'   => 'required|string|max:50',
+            'isi'     => 'required|string',
+            'tanggal' => 'required|date',
+            'gambar'  => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
+            'status'  => 'required|in:Draft,Published',
         ];
     }
 }

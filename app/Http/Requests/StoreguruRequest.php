@@ -12,7 +12,7 @@ class StoreguruRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,7 +23,10 @@ class StoreguruRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'nama_guru' => ['required', 'string', 'max:40'],
+            'nip'       => ['required', 'string', 'max:15'],
+            'mapel'     => ['required', 'string', 'max:40'],
+            'foto'      => ['required', 'image', 'mimes:jpg,jpeg,png', 'max:2048'],
         ];
     }
 }

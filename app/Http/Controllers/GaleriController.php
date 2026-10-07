@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Galeri;
 use App\Http\Requests\StoreGaleriRequest;
 use App\Http\Requests\UpdateGaleriRequest;
+use Illuminate\Support\Facades\Storage;
 
 class GaleriController extends Controller
 {
@@ -14,6 +15,8 @@ class GaleriController extends Controller
     public function index()
     {
         //
+        $galeris['galeris'] = Galeri::latest()->paginate(10);
+        return view('admin.galeri.index', $galeris);
     }
 
     /**
@@ -22,6 +25,7 @@ class GaleriController extends Controller
     public function create()
     {
         //
+        return view('admin.galeri.create');
     }
 
     /**
@@ -29,7 +33,20 @@ class GaleriController extends Controller
      */
     public function store(StoreGaleriRequest $request)
     {
-        //
+        $data = $request->validated();
+
+        if ($request->hasFile('file')) {
+            $folder = $request->kategori === 'Foto' ? 'galeri/foto' : 'galeri/video';
+            $file = $request->file('file');
+
+            $data['file'] = $file->store($folder);
+            $data['mime_type'] = $file->getMimeType();
+        }
+
+        Galeri::create($data);
+
+        return redirect()->route('admin.galeri.index')
+            ->with('success', 'Galeri berhasil ditambahkan');
     }
 
     /**
@@ -46,6 +63,7 @@ class GaleriController extends Controller
     public function edit(Galeri $galeri)
     {
         //
+        return view('admin.galeri.edit', compact('galeri'));
     }
 
     /**
@@ -53,7 +71,24 @@ class GaleriController extends Controller
      */
     public function update(UpdateGaleriRequest $request, Galeri $galeri)
     {
-        //
+        $data = $request->validated();
+
+        if ($request->hasFile('file')) {
+            if ($galeri->file && Storage::exists($galeri->file)) {
+                Storage::delete($galeri->file);
+            }
+
+            $folder = $request->kategori === 'Foto' ? 'galeri/foto' : 'galeri/video';
+            $file = $request->file('file');
+
+            $data['file'] = $file->store($folder);
+            $data['mime_type'] = $file->getMimeType();
+        }
+
+        $galeri->update($data);
+
+        return redirect()->route('admin.galeri.index')
+            ->with('success', 'Galeri berhasil diperbarui');
     }
 
     /**
@@ -62,5 +97,12 @@ class GaleriController extends Controller
     public function destroy(Galeri $galeri)
     {
         //
+        if ($galeri->file && Storage::exists($galeri->file)) {
+            Storage::delete($galeri->file);
+        }
+
+        $galeri->delete();
+
+        return redirect()->route('admin.galeri.index')->with('success', 'Galeri berhasil dihapus');
     }
 }

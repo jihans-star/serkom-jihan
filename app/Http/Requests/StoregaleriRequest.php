@@ -2,28 +2,25 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoregaleriRequest extends FormRequest
+class StoreGaleriRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, ValidationRule|array<mixed>|string>
-     */
     public function rules(): array
     {
         return [
-            //
+            'judul'      => 'required|string|max:50',
+            'keterangan' => 'required|string',
+            'kategori'   => 'required|in:Foto,Video',
+            'tanggal'    => 'required|date',
+            'file'       => $this->kategori === 'Foto'
+            ? 'required|image|mimes:jpeg,png,jpg,webp|max:5048'
+            : 'required|file|mimes:mp4,mov,avi,mkv|max:20480',
         ];
     }
 }

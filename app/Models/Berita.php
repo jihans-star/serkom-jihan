@@ -2,11 +2,32 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Berita extends Model
 {
-    /** @use HasFactory<\Database\Factories\BeritaFactory> */
-    use HasFactory;
+    use HasFactory, HasUuids;
+
+    protected $table = 'beritas';
+
+    protected $fillable = [
+        'judul',
+        'isi',
+        'tanggal',
+        'gambar',
+        'status',
+        'slug',
+        'id_user',
+    ];
+
+    protected $casts = [
+        'tanggal' => 'date',
+    ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'id_user');
+    }
 }

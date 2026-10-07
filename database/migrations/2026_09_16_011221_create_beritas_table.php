@@ -12,12 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('beritas', function (Blueprint $table) {
-            $table->id();
-            $table->string('judul',50);
+            $table->uuid('id')->primary();
+            $table->string('judul', 100)->unique();
+            $table->text('slug')->unique();
             $table->text('isi');
             $table->date('tanggal');
             $table->string('gambar');
-            $table->foreignId('id_uwser')->constrained('users')->cascadeOnDelete();
+            $table->enum('status', ['Draft', 'Published'])->default('Draft');
+            $table->foreignUuid('id_user')->constrained('users')->cascadeOnUpdate()->restrictOnDelete();
             $table->timestamps();
         });
     }

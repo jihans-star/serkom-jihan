@@ -1,19 +1,18 @@
 @extends('layouts.admin')
 @section('content')
-    <main class="dashboard-content">
         <div class="container-fluid px-3 px-lg-4 py-4">
           <div class="page-heading">
             <div class="page-heading-copy">
               <span class="page-icon"><i class="bi bi-person-plus" aria-hidden="true"></i></span>
               <div>
-                <p class="eyebrow mb-1">Management</p>
-                <h1 class="h3 mb-1">Add Operator</h1>
-                <p class="text-muted mb-0">Create a new operator account.</p>
+                <p class="eyebrow mb-1">Manajemen</p>
+                <h1 class="h3 mb-1">TAMBAH PENGELOLA</h1>
+                <p class="text-muted mb-0">Buat akun pengelola baru.</p>
               </div>
             </div>
             <div class="heading-actions">
                 <a class="btn btn-outline-secondary btn-sm" href="{{ route('admin.user.index') }}">
-                    <i class="bi bi-arrow-left" aria-hidden="true"></i> Back to Operators
+                    <i class="bi bi-arrow-left" aria-hidden="true"></i> Kembali ke Pengelola
                 </a>
             </div>
           </div>
@@ -35,14 +34,14 @@
                 @csrf
                 <div class="panel-header">
                     <div>
-                        <h2 class="h5 mb-1 section-title"><i class="bi bi-person-plus" aria-hidden="true"></i><span>Operator Information</span></h2>
-                        <p class="text-muted mb-0">Fill in the account details below.</p>
+                        <h2 class="h5 mb-1 section-title"><i class="bi bi-person-plus" aria-hidden="true"></i><span>Informasi Pengelola</span></h2>
+                        <p class="text-muted mb-0">Isi detail akun di bawah ini.</p>
                     </div>
                 </div>
 
                 <div class="row g-3">
                   <div class="col-md-12">
-                      <label class="form-label" for="name">Full Name</label>
+                      <label class="form-label" for="name">Nama Lengkap</label>
                       <input class="form-control" id="name" name="name" type="text" value="{{ old('name') }}" required>
                   </div>
 
@@ -55,12 +54,22 @@
                       <label class="form-label" for="password">Password</label>
                       <input class="form-control" id="password" name="password" type="password" required>
                   </div>
+
+                  {{-- Pilihan Role / Peran --}}
+                  <div class="col-md-12">
+                      <label class="form-label" for="role">Peran (Role)</label>
+                      <select class="form-select" id="role" name="role" required>
+                          <option value="" disabled selected>Pilih Peran</option>
+                          <option value="Admin" {{ old('role') == 'Admin' ? 'selected' : '' }}>Admin</option>
+                          <option value="Operator" {{ old('role') == 'Operator' ? 'selected' : '' }}>Operator</option>
+                      </select>
+                  </div>
                 </div>
 
                 <div class="d-flex flex-wrap justify-content-end gap-2 mt-4">
-                    <a class="btn btn-outline-secondary" href="{{ route('admin.user.index') }}">Cancel</a>
+                    <a class="btn btn-outline-secondary" href="{{ route('admin.user.index') }}">Batal</a>
                     <button class="btn btn-primary" type="submit">
-                        <i class="bi bi-person-check" aria-hidden="true"></i> Create Operator
+                        <i class="bi bi-person-check" aria-hidden="true"></i> Buat Pengelola
                     </button>
                 </div>
               </form>
@@ -68,14 +77,13 @@
 
             <div class="col-12 col-xl-4">
               <div class="panel h-100">
-                <h2 class="h5 mb-3 section-title"><i class="bi bi-list-check" aria-hidden="true"></i><span>Access Checklist</span></h2>
+                <h2 class="h5 mb-3 section-title"><i class="bi bi-list-check" aria-hidden="true"></i><span>Daftar Periksa Akses</span></h2>
                 <div class="activity-list">
-                  <div class="activity-item"><span class="activity-dot bg-success"></span><div><p class="mb-1 fw-semibold">Default Role</p><p class="text-muted small mb-0">New accounts automatically get the Operator role.</p></div></div>
-                  <div class="activity-item"><span class="activity-dot bg-primary"></span><div><p class="mb-1 fw-semibold">Secure password</p><p class="text-muted small mb-0">Use a strong combination of characters.</p></div></div>
+                  <div class="activity-item"><span class="activity-dot bg-success"></span><div><p class="mb-1 fw-semibold">Pengaturan Peran</p><p class="text-muted small mb-0">Tentukan hak akses akun dengan memilih Admin atau Operator.</p></div></div>
+                  <div class="activity-item"><span class="activity-dot bg-primary"></span><div><p class="mb-1 fw-semibold">Password Aman</p><p class="text-muted small mb-0">Gunakan kombinasi karakter yang kuat.</p></div></div>
                 </div>
               </div>
             </div>
           </section>
         </div>
-      </main>
 @endsection

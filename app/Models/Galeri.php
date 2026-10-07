@@ -2,11 +2,26 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Galeri extends Model
 {
-    /** @use HasFactory<\Database\Factories\GaleriFactory> */
-    use HasFactory;
+    use HasFactory,HasUuids;
+
+    protected $table = 'galeris';
+
+    protected $fillable = [
+        'judul',
+        'keterangan',
+        'file',
+        'mime_type',
+        'kategori',
+        'tanggal',
+    ];
+
+    protected $casts = [
+        'tanggal' => 'date',
+    ];
 }

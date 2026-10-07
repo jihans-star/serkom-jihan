@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Guru;
 use App\Http\Requests\StoreGuruRequest;
 use App\Http\Requests\UpdateGuruRequest;
+use Illuminate\Support\Facades\Storage;
 
 class GuruController extends Controller
 {
@@ -13,7 +14,8 @@ class GuruController extends Controller
      */
     public function index()
     {
-        //
+        $gurus = Guru::latest()->paginate(10);
+        return view('admin.guru.index', compact('gurus'));
     }
 
     /**
@@ -21,7 +23,7 @@ class GuruController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.guru.create');
     }
 
     /**
@@ -29,7 +31,17 @@ class GuruController extends Controller
      */
     public function store(StoreGuruRequest $request)
     {
-        //
+        $data = $request->validated();
+
+        if ($request->hasFile('foto')) {
+            $data['foto'] = $request->file('foto')->store('guru/foto');
+        }
+
+        Guru::create($data);
+
+        return redirect()
+            ->route('admin.guru.index')
+            ->with('success', 'Data guru berhasil ditambahkan!');
     }
 
     /**
@@ -37,7 +49,7 @@ class GuruController extends Controller
      */
     public function show(Guru $guru)
     {
-        //
+        return view('admin.guru.show', compact('guru'));
     }
 
     /**
@@ -45,7 +57,7 @@ class GuruController extends Controller
      */
     public function edit(Guru $guru)
     {
-        //
+        return view('admin.guru.edit', compact('guru'));
     }
 
     /**
@@ -53,7 +65,20 @@ class GuruController extends Controller
      */
     public function update(UpdateGuruRequest $request, Guru $guru)
     {
-        //
+        $data = $request->validated();
+
+        if ($request->hasFile('foto')) {
+            if ($guru->foto && Storage::exists($guru->foto)) {
+                Storage::delete($guru->foto);
+            }
+            $data['foto'] = $request->file('foto')->store('guru/foto', 'public');
+        }
+
+        $guru->update($data);
+
+        return redirect()
+            ->route('admin.guru.index')
+            ->with('success', 'Data guru berhasil diperbarui!');
     }
 
     /**
@@ -61,6 +86,15 @@ class GuruController extends Controller
      */
     public function destroy(Guru $guru)
     {
-        //
+
+        if ($guru->foto && Storage::exists($guru->foto)) {
+            Storage::delete($guru->foto);
+        }
+
+        $guru->delete();
+
+        return redirect()
+            ->route('admin.guru.index')
+            ->with('success', 'Data guru berhasil dihapus!');
     }
 }
