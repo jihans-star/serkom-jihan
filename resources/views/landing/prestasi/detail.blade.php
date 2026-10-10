@@ -56,7 +56,7 @@
                         <div class="card-body p-3">
                             <div class="d-flex flex-column gap-3">
                                 @foreach ($prestasiLainnya as $item)
-                                    <a href="{{ route('prestasi.detail', $item->id) }}"
+                                    <a href="{{ route('prestasi.detail', $item->slug) }}"
                                         class="text-decoration-none bg-white p-2.5 rounded-3 shadow-xs d-block transition-all hover-shadow">
                                         <div class="d-flex align-items-center">
                                             @if ($item->gambar)

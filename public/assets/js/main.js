@@ -416,8 +416,8 @@ document.addEventListener("DOMContentLoaded", function () {
                         return;
                     }
 
-                    const textKategoriTingkat = cells[2]
-                        ? cells[2].textContent.trim().toLowerCase()
+                    const textKategoriTingkat = cells[3]
+                        ? cells[3].textContent.trim().toLowerCase()
                         : "";
 
                     // Perbaikan logika Kategori agar "Akademik" tidak menarik "Non Akademik"
@@ -490,7 +490,7 @@ document.addEventListener("DOMContentLoaded", function () {
         [
             {
                 id: "filterEkskulPembina",
-                column: 2
+                column: 3
             }
         ],
         "applyEkskulFilter",

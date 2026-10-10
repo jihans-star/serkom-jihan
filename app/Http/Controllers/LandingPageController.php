@@ -9,6 +9,8 @@ use App\Models\Prestasi;
 use App\Models\Galeri;
 use App\Models\Berita;
 use App\Models\Profil_sekolah;
+use Illuminate\Http\Request;
+
 
 class LandingPageController extends Controller
 {
@@ -65,7 +67,7 @@ class LandingPageController extends Controller
         $profil = Profil_sekolah::first();
         $guru = Guru::findOrFail($id);
         $guruLainnya = Guru::where('id', '!=', $id)
-            ->latest()
+            ->where('mapel', $guru->mapel)
             ->take(4)
             ->get();
         return view('landing.guru.detail', compact('profil', 'guru', 'guruLainnya'));
@@ -81,12 +83,14 @@ class LandingPageController extends Controller
         ));
     }
 
-    public function detailEkstrakurikuler($id)
+    public function detailEkstrakurikuler($slug)
     {
         $profil = Profil_sekolah::first();
-        $ekstrakurikuler = Ekstrakurikuler::findOrFail($id);
-        $ekstrakurikulerLainnya = $ekstrakurikuler::where('id', '!=', $id)
-            ->latest()->take(4)->get();
+        $ekstrakurikuler = Ekstrakurikuler::where('slug',$slug)->firstOrFail();
+        $ekstrakurikulerLainnya = Ekstrakurikuler::where('slug', '!=', $slug)
+            ->latest()
+            ->take(4)
+            ->get();           ;
         return view('landing.ekstrakurikuler.detail', compact(
             'profil',
             'ekstrakurikuler',
@@ -104,27 +108,31 @@ class LandingPageController extends Controller
         ));
     }
 
-    public function detailPrestasi($id)
+    public function detailPrestasi($slug)
     {
         $profil = Profil_sekolah::first();
-        $prestasi = Prestasi::findOrFail($id);
+        $prestasi = Prestasi::where('slug',$slug)->firstOrFail();
 
         $prestasiLainnya = Prestasi::latest()
-            ->where('id', '!=', $id)
+            ->where('slug', '!=', $slug)
             ->take(4)
             ->get();
 
-        return view('landing.prestasi.detail', compact('profil', 'prestasi','prestasiLainnya'));
+        return view('landing.prestasi.detail', compact('profil', 'prestasi', 'prestasiLainnya'));
     }
 
     public function galeri()
     {
         $profil = Profil_sekolah::first();
-        $galeri = Galeri::latest()->get();
-        return view('landing.galeri.index', compact(
-            'profil',
-            'galeri'
-        ));
+        $galeriFoto = Galeri::where('kategori', 'Foto')
+            ->latest()
+            ->get();
+
+        $galeriVideo = Galeri::where('kategori', 'Video')
+            ->latest()
+            ->get();
+
+        return view('landing.galeri.index', compact('profil','galeriFoto','galeriVideo'));
     }
 
     public function detailGaleri($id)
@@ -133,6 +141,7 @@ class LandingPageController extends Controller
         $galeri = Galeri::findOrFail($id);
 
         $galeriLainnya = Galeri::latest()
+            ->where('kategori',$galeri->kategori)
             ->where('id', '!=', $id)
             ->take(4)
             ->get();
@@ -140,12 +149,19 @@ class LandingPageController extends Controller
         return view('landing.galeri.detail', compact('profil', 'galeri', 'galeriLainnya'));
     }
 
-    public function berita()
+    public function berita(Request $request)
     {
         $profil = Profil_sekolah::first();
-        $berita = Berita::where('status', 'Published')
+        if(isset($_GET['search'])){
+            $berita = Berita::where('status', 'Published')
+            ->where('judul','like', '%'.$_GET['search'] . '%')
             ->latest()
             ->get();
+        }else{
+            $berita = Berita::where('status', 'Published')
+                ->latest()
+                ->get();
+        }
 
         return view('landing.berita.index', compact(
             'profil',

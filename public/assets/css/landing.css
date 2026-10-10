@@ -34,6 +34,7 @@ a {
     text-decoration: none;
 }
 
+/* NAVBAR */
 .navbar {
     background: rgba(255, 255, 255, .94);
     backdrop-filter: blur(14px);
@@ -43,7 +44,7 @@ a {
 .navbar-brand {
     color: var(--dark) !important;
     font-weight: 800;
-    font-size: 1.15rem;
+    font-size: 18.4px;
     display: flex;
     align-items: center;
     gap: 12px;
@@ -65,7 +66,7 @@ a {
 
 .nav-link {
     color: #475569 !important;
-    font-size: .92rem;
+    font-size: 14.72px;
     font-weight: 600;
     padding: 8px 12px !important;
     border-radius: 8px;
@@ -83,6 +84,7 @@ a {
     box-shadow: none !important;
 }
 
+/* HERO SECTION */
 .hero-section {
     min-height: 100vh;
     position: relative;
@@ -107,14 +109,7 @@ a {
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(
-        90deg,
-        var(--light) 0%,
-        rgba(248, 250, 252, .95) 15%,
-        rgba(248, 250, 252, .65) 38%,
-        rgba(248, 250, 252, .15) 70%,
-        transparent 100%
-    );
+    background: linear-gradient(to right, var(--light), transparent);
 }
 
 .hero-section .container {
@@ -126,7 +121,7 @@ a {
 .section-subtitle {
     display: inline-block;
     color: var(--primary);
-    font-size: .78rem;
+    font-size: 12.48px;
     font-weight: 800;
     letter-spacing: 2px;
     margin-bottom: 8px;
@@ -135,7 +130,7 @@ a {
 .hero-section h1 {
     max-width: 700px;
     color: var(--dark);
-    font-size: clamp(2.5rem, 5vw, 4.4rem);
+    font-size: clamp(40px, 5vw, 70.4px);
     font-weight: 800;
     line-height: 1.08;
     letter-spacing: -2px;
@@ -145,7 +140,7 @@ a {
 .hero-section p {
     max-width: 580px;
     color: var(--muted);
-    font-size: 1.05rem;
+    font-size: 16.8px;
     margin-bottom: 28px;
 }
 
@@ -155,10 +150,7 @@ a {
     flex-wrap: wrap;
 }
 
-/* =========================
-   GENERAL SECTION
-========================= */
-
+/* GENERAL SECTION */
 .section-padding {
     padding: 90px 0;
 }
@@ -170,7 +162,7 @@ a {
 
 .section-title {
     color: var(--dark);
-    font-size: clamp(2rem, 4vw, 2.7rem);
+    font-size: clamp(32px, 4vw, 43.2px);
     font-weight: 800;
     letter-spacing: -1px;
     margin-bottom: 10px;
@@ -181,10 +173,7 @@ a {
     color: var(--muted);
 }
 
-/* =========================
-   BUTTON
-========================= */
-
+/* BUTTON */
 .btn {
     padding: 10px 20px;
     border-radius: 10px;
@@ -208,10 +197,7 @@ a {
     transform: translateY(-2px);
 }
 
-/* =========================
-   PROFILE
-========================= */
-
+/* PROFILE */
 .principal-card {
     display: flex;
     align-items: center;
@@ -232,7 +218,7 @@ a {
 
 .principal-info h3 {
     color: var(--dark);
-    font-size: 1.25rem;
+    font-size: 20px;
     font-weight: 800;
 }
 
@@ -272,20 +258,17 @@ a {
 .info-item small {
     display: block;
     color: var(--muted);
-    font-size: .75rem;
+    font-size: 12px;
 }
 
 .info-item h5 {
     color: var(--dark);
-    font-size: .9rem;
+    font-size: 14.4px;
     font-weight: 700;
     margin: 0;
 }
 
-/* =========================
-   STATS
-========================= */
-
+/* STATS */
 .stats-section {
     padding: 65px 0;
     background: var(--dark);
@@ -298,12 +281,12 @@ a {
 .stat-item i {
     display: block;
     color: #60a5fa;
-    font-size: 2rem;
+    font-size: 32px;
     margin-bottom: 8px;
 }
 
 .stat-item h2 {
-    font-size: 2.4rem;
+    font-size: 38.4px;
     font-weight: 800;
     margin: 0;
 }
@@ -313,10 +296,7 @@ a {
     margin: 2px 0 0;
 }
 
-/* =========================
-   CARDS
-========================= */
-
+/* CARDS */
 .teacher-card,
 .activity-card,
 .achievement-card,
@@ -380,7 +360,7 @@ a {
 .achievement-body h4,
 .news-body h4 {
     color: var(--dark);
-    font-size: 1.1rem;
+    font-size: 17.6px;
     font-weight: 750;
     margin-bottom: 7px;
 }
@@ -394,7 +374,7 @@ a {
 .achievement-body p,
 .news-body p {
     color: var(--muted);
-    font-size: .9rem;
+    font-size: 14.4px;
     margin: 0;
 }
 
@@ -405,7 +385,7 @@ a {
     color: var(--primary);
     background: rgba(37, 99, 235, .08);
     border-radius: 50px;
-    font-size: .72rem;
+    font-size: 11.52px;
     font-weight: 700;
 }
 
@@ -414,10 +394,7 @@ a {
     font-weight: 600;
 }
 
-/* =========================
-   FOOTER
-========================= */
-
+/* FOOTER */
 .footer-section {
     padding-top: 70px;
     background: var(--dark);
@@ -432,7 +409,7 @@ a {
 
 .footer-section p {
     color: #94a3b8;
-    font-size: .9rem;
+    font-size: 14.4px;
 }
 
 .footer-menu,
@@ -448,7 +425,7 @@ a {
 
 .footer-menu a {
     color: #94a3b8;
-    font-size: .9rem;
+    font-size: 14.4px;
     transition: .2s;
 }
 
@@ -461,7 +438,7 @@ a {
     gap: 10px;
     margin-bottom: 12px;
     color: #94a3b8;
-    font-size: .9rem;
+    font-size: 14.4px;
 }
 
 .contact-list i {
@@ -480,7 +457,7 @@ a {
     display: grid;
     place-items: center;
     color: #cbd5e1;
-    background: rgba(255,255,255,.08);
+    background: rgba(255, 255, 255, .08);
     border-radius: 10px;
     transition: .25s;
 }
@@ -494,15 +471,16 @@ a {
 .footer-bottom {
     margin-top: 50px;
     padding: 20px 0;
-    border-top: 1px solid rgba(255,255,255,.08);
+    border-top: 1px solid rgba(255, 255, 255, .08);
     text-align: center;
 }
 
 .footer-bottom p {
     margin: 0;
-    font-size: .8rem;
+    font-size: 12.8px;
 }
 
+/* ACTIVITY IMAGE & VIDEO */
 .activity-image {
     width: 100%;
     height: 250px;
@@ -522,8 +500,7 @@ a {
     background: #000;
 }
 
-
-
+/* TABLET */
 @media (max-width: 991px) {
     .hero-background {
         width: 100%;
@@ -539,6 +516,7 @@ a {
     }
 }
 
+/* HP */
 @media (max-width: 767px) {
     .section-padding {
         padding: 65px 0;
@@ -563,11 +541,11 @@ a {
     }
 
     .hero-section h1 {
-        font-size: 2.5rem;
+        font-size: 40px;
     }
 
     .hero-section p {
-        font-size: .95rem;
+        font-size: 15.2px;
     }
 
     .teacher-image {

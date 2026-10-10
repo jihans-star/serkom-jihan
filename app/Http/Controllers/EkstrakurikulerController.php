@@ -6,6 +6,8 @@ use App\Models\Ekstrakurikuler;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\StoreEkstrakurikulerRequest;
 use App\Http\Requests\UpdateEkstrakurikulerRequest;
+use Illuminate\Support\Str;
+
 
 class EkstrakurikulerController extends Controller
 {
@@ -31,10 +33,13 @@ class EkstrakurikulerController extends Controller
      */
     public function store(StoreEkstrakurikulerRequest $request)
     {
+        $slug = Str::slug($request->nama_eskul);
+        $request->merge(['slug' => $slug]);
         $gambarPath = $request->file('gambar')->store('ekstrakurikuler');
 
         Ekstrakurikuler::create([
             'nama_eskul' => $request->nama_eskul,
+            'slug' => $slug,
             'pembina' => $request->pembina,
             'jadwal_latihan' => $request->jadwal_latihan,
             'deskripsi' => $request->deskripsi,
@@ -58,6 +63,7 @@ class EkstrakurikulerController extends Controller
     public function update(UpdateEkstrakurikulerRequest $request, Ekstrakurikuler $ekstrakurikuler)
     {
         $gambarPath = $ekstrakurikuler->gambar;
+
         if ($request->hasFile('gambar')) {
             if ($gambarPath && Storage::exists($gambarPath)) {
                 Storage::delete($gambarPath);
@@ -67,6 +73,7 @@ class EkstrakurikulerController extends Controller
 
         $ekstrakurikuler->update([
             'nama_eskul' => $request->nama_eskul,
+            'slug' => Str::slug($request->nama_eskul),
             'pembina' => $request->pembina,
             'jadwal_latihan' => $request->jadwal_latihan,
             'deskripsi' => $request->deskripsi,

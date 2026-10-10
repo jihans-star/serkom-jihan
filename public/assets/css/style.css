@@ -452,18 +452,6 @@ html[data-theme="dark"] .profile-button .avatar-sm {
   margin-bottom: 1.35rem;
 }
 
-.page-heading h1 {
-  font-weight: 800;
-  letter-spacing: 0;
-}
-
-.eyebrow {
-  color: var(--admin-primary);
-  font-size: 0.78rem;
-  font-weight: 800;
-  text-transform: uppercase;
-}
-
 .heading-actions {
   display: flex;
   flex-wrap: wrap;

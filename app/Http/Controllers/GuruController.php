@@ -14,8 +14,8 @@ class GuruController extends Controller
      */
     public function index()
     {
-        $gurus = Guru::latest()->paginate(10);
-        return view('admin.guru.index', compact('gurus'));
+        $gurus['gurus'] = Guru::latest()->paginate(10);
+        return view('admin.guru.index', $gurus);
     }
 
     /**

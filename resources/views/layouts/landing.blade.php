@@ -53,31 +53,31 @@
                     </li>
                     <li class="nav-item">
                         <a href="{{ route('guru') }}"
-                            class="nav-link {{ request()->routeIs('guru') ? 'active' : '' }}">
+                            class="nav-link {{ request()->routeIs('guru','guru.detail') ? 'active' : '' }}">
                             Guru
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="{{ route('ekstrakurikuler') }}"
-                            class="nav-link {{ request()->routeIs('ekstrakurikuler') ? 'active' : '' }}">
+                            class="nav-link {{ request()->routeIs('ekstrakurikuler','ekstrakurikuler.detail') ? 'active' : '' }}">
                             Ekstrakurikuler
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="{{ route('prestasi') }}"
-                            class="nav-link {{ request()->routeIs('prestasi') ? 'active' : '' }}">
+                            class="nav-link {{ request()->routeIs('prestasi','prestasi.detail') ? 'active' : '' }}">
                             Prestasi
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="{{ route('galeri') }}"
-                            class="nav-link {{ request()->routeIs('galeri') ? 'active' : '' }}">
+                            class="nav-link {{ request()->routeIs('galeri','galeri.detail') ? 'active' : '' }}">
                             Galeri
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="{{ route('berita') }}"
-                            class="nav-link {{ request()->routeIs('berita') ? 'active' : '' }}">
+                            class="nav-link {{ request()->routeIs('berita','berita.indexs') ? 'active' : '' }}">
                             Berita
                         </a>
                     </li>
@@ -96,18 +96,17 @@
                     <p>
                         {{ $profil->deskripsi ?? 'Membangun generasi unggul, berkarakter, dan berprestasi melalui pendidikan berkualitas.' }}
                     </p>
-
                     <div class="social-links">
-                        <a href="#">
-                            <i class="bi bi-facebook"></i>
+                        <a href="mailto:info@smanovacendekia.sch.id" title="Email Sekolah">
+                            <i class="bi bi-envelope"></i>
                         </a>
 
-                        <a href="#">
-                            <i class="bi bi-instagram"></i>
+                        <a href="https://wa.me/628xxxxxxxxxx" target="_blank" title="WhatsApp Sekolah">
+                            <i class="bi bi-whatsapp"></i>
                         </a>
 
-                        <a href="#">
-                            <i class="bi bi-youtube"></i>
+                        <a href="https://maps.app.goo.gl/jVaVHpSjZc2uXEae8" target="_blank" title="Lokasi Sekolah">
+                            <i class="bi bi-geo-alt"></i>
                         </a>
                     </div>
                 </div>

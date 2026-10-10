@@ -141,9 +141,9 @@
                             <label class="form-label" for="tanggal_perolehan">
                                 Tanggal Perolehan
                             </label>
-
                             <input class="form-control" id="tanggal_perolehan" name="tanggal_perolehan" type="date"
-                                value="{{ old('tanggal_perolehan', $prestasi->tanggal_perolehan) }}" required>
+                                value="{{ old('tanggal_perolehan', substr($prestasi->tanggal_perolehan, 0, 10)) }}"
+                                required>
                         </div>
 
                         {{-- Gambar --}}

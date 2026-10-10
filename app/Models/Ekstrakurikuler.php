@@ -14,6 +14,7 @@ class Ekstrakurikuler extends Model
 
     protected $fillable = [
         'nama_eskul',
+        'slug',
         'pembina',
         'jadwal_latihan',
         'deskripsi',

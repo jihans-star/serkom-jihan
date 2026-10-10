@@ -68,6 +68,7 @@
                         <tr>
                             <th scope="col">Gambar</th>
                             <th scope="col">Nama Eskul</th>
+                            <th scope="col">slug</th>
                             <th scope="col">Pembina</th>
                             <th scope="col">Jadwal Latihan</th>
                             <th scope="col" class="text-end">Aksi</th>
@@ -82,6 +83,9 @@
                                 </td>
                                 <td class="fw-semibold">
                                     {{ $item->nama_eskul }}
+                                </td>
+                                <td>
+                                    {{ $item->slug }}
                                 </td>
                                 <td>
                                     <span class="badge text-bg-light border">{{ trim($item->pembina) }}</span>

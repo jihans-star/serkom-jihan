@@ -24,9 +24,22 @@ class UpdateguruRequest extends FormRequest
     {
         return [
             'nama_guru' => ['required', 'string', 'max:40'],
-            'nip'       => ['required', 'string', 'max:15'],
+            'nip'       => ['required', 'string', 'max:15', 'unique:gurus,nip,' . $this->guru->id],
             'mapel'     => ['required', 'string', 'max:40'],
             'foto'      => ['nullable', 'image', 'mimes:jpg,jpeg,png', 'max:2048'],
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'nama_guru.required' => 'Nama guru wajib diisi.',
+            'nip.required' => 'NIP wajib diisi.',
+            'nip.unique' => 'NIP sudah digunakan oleh guru lain.',
+            'mapel.required' => 'Mata pelajaran wajib diisi.',
+            'foto.image' => 'File harus berupa gambar.',
+            'foto.mimes' => 'Foto harus berformat JPG, JPEG, atau PNG.',
+            'foto.max' => 'Ukuran foto maksimal 2 MB.',
         ];
     }
 }

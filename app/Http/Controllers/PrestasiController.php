@@ -1,10 +1,13 @@
 <?php
+
 namespace App\Http\Controllers;
+
 use App\Http\Controllers\Controller;
 use App\Models\Prestasi;
 use App\Http\Requests\StorePrestasiRequest;
 use App\Http\Requests\UpdatePrestasiRequest;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class PrestasiController extends Controller
 {
@@ -22,12 +25,15 @@ class PrestasiController extends Controller
     public function store(StorePrestasiRequest $request)
     {
         $gambarPath = null;
+        $slug = Str::slug($request->nama_prestasi);
+        $request->merge(['slug' => $slug]);
         if ($request->hasFile('gambar')) {
             $gambarPath = $request->file('gambar')->store('prestasi', 'public');
         }
 
         Prestasi::create([
             'nama_prestasi' => $request->nama_prestasi,
+            'slug' => $slug,
             'kategori' => $request->kategori,
             'tingkat' => $request->tingkat,
             'nama_peraih' => $request->nama_peraih,
@@ -56,6 +62,7 @@ class PrestasiController extends Controller
 
         $prestasi->update([
             'nama_prestasi' => $request->nama_prestasi,
+            'slug' => Str::slug($request->nama_prestasi),
             'kategori' => $request->kategori,
             'tingkat' => $request->tingkat,
             'nama_peraih' => $request->nama_peraih,

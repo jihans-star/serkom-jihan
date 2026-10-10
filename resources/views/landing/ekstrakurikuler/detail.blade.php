@@ -49,7 +49,7 @@
                         <div class="card-body p-3">
                             <div class="d-flex flex-column gap-3">
                                 @foreach ($ekstrakurikulerLainnya as $item)
-                                    <a href="{{ route('ekstrakurikuler.detail', $item->id) }}"
+                                    <a href="{{ route('ekstrakurikuler.detail', $item->slug) }}"
                                         class="text-decoration-none bg-white p-2.5 rounded-3 shadow-xs d-block transition-all hover-shadow">
                                         <div class="d-flex align-items-center">
                                             @if ($item->gambar)

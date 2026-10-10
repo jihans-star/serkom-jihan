@@ -13,7 +13,7 @@
             <div class="row g-4 mt-3">
                 @forelse ($prestasi as $prestasis)
                     <div class="col-md-6 col-lg-4" data-aos="fade-up">
-                        <a href="{{ route('prestasi.detail', $prestasis->id) }}">
+                        <a href="{{ route('prestasi.detail', $prestasis->slug) }}">
                             <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden card-hover">
                                 <div class="achievement-image">
                                     <img src="{{ $prestasis->gambar ? asset('storage/' . $prestasis->gambar) : asset('assets/img/default.jpg') }}"

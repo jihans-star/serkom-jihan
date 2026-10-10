@@ -67,8 +67,10 @@
                                 @php
                                     $currentYear = date('Y');
                                 @endphp
-                                @for ($year = $currentYear; $year >= 2020; $year--)
-                                    <option value="{{ $year }}" {{ old('tahun_masuk') == $year ? 'selected' : '' }}>{{ $year }}</option>
+                                @for ($year = $currentYear; $year >= $currentYear - 3; $year--)
+                                    <option value="{{ $year }}" {{ old('tahun_masuk') == $year ? 'selected' : '' }}>
+                                        {{ $year }}
+                                    </option>
                                 @endfor
                             </select>
                         </div>

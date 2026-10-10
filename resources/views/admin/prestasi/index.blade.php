@@ -88,6 +88,7 @@
                         <tr>
                             <th scope="col">Foto</th>
                             <th scope="col">Nama Prestasi</th>
+                            <th scope="col">Slug</th>
                             <th scope="col">Kategori / Tingkat</th>
                             <th scope="col">Peraih</th>
                             <th scope="col">Tanggal</th>
@@ -107,6 +108,9 @@
                                 </td>
                                 <td class="fw-semibold">
                                     {{ $item->nama_prestasi }}
+                                </td>
+                                <td class="fw-semibold">
+                                    {{ $item->slug }}
                                 </td>
                                 <td>
                                     <span class="badge text-bg-primary">{{ $item->kategori }}</span>

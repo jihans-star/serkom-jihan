@@ -97,7 +97,8 @@
                                 <td>
                                     {{($item->tanggal)->format('d M, Y') }}
                                 </td>
-                                <td>{{ $item->slug }}</td>
+                                <td>
+                                    {{ $item->slug }}</td>
                                 <td>
                                     <span class="badge text-bg-light border">{{ $item->user->name ?? 'Admin' }}</span>
                                 </td>

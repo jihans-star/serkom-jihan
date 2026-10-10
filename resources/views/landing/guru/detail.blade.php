@@ -40,7 +40,7 @@
                     <div class="card border-0 shadow-sm rounded-4 bg-light overflow-hidden">
                         <div class="card-header bg-white border-bottom py-3 px-4">
                             <h5 class="mb-0 fw-bold text-dark d-flex align-items-center">
-                                Guru Lainnya
+                                Guru {{ $guru->mapel }} Lainnya
                             </h5>
                         </div>
 

@@ -5,8 +5,8 @@
             style="background-image: url('{{ $profil && $profil->foto ? asset('storage/' . $profil->foto) : asset('assets/img/sekolah.jpg') }}');">
         </div>
 
-        <div class="container position-relative">
-            <div class="row align-items-center min-vh-100">
+        <div class="container">
+            <div class="row align-items-center">
                 <div class="col-lg-6" data-aos="fade-right">
                     <span class="hero-subtitle">SELAMAT DATANG DI</span>
                     <h1>{{ $profil->nama_sekolah ?? 'SMA Nova Cendekia' }}</h1>
@@ -18,14 +18,12 @@
         </div>
     </section>
 
-
-
     <section class="py-5 bg-light">
         <div class="container py-lg-4">
             <div class="card border-0 shadow-sm rounded-4 overflow-hidden p-4 p-lg-5">
                 <div class="row align-items-center g-5">
                     <div class="col-lg-4 text-center text-lg-start" data-aos="fade-right">
-                        <div class="position-relative d-inline-block w-100">
+                        <div class="d-inline-block">
                             <img src="{{ $profil->foto_kepala_sekolah ? asset('storage/' . $profil->foto_kepala_sekolah) : asset('assets/img/default-user.jpg') }}"
                                 alt="{{ $profil->kepala_sekolah ?? 'Kepala Sekolah' }}"
                                 class="img-fluid rounded-4 shadow-sm w-100 object-fit-cover m-auto"
@@ -42,7 +40,7 @@
                     <div class="col-lg-8" data-aos="fade-left">
                         <div class="ps-lg-3">
                             <div class="mb-3">
-                                <span class="badge bg-primary-subtle text-primary px-3 py-2 rounded-pill fw-semibold small">
+                                <span class="bg-primary-subtle text-primary px-3 py-2 rounded-pill fw-semibold small">
                                     SAMBUTAN KEPALA SEKOLAH
                                 </span>
                             </div>
@@ -56,14 +54,14 @@
                                 Assalamu'alaikum Warahmatullahi Wabarakatuh.
                             </p>
 
-                            <p class="text-secondary lh-lg mb-3">
+                            <p class="text-secondary mb-3">
                                 Selamat datang di website resmi
                                 <strong class="text-dark">{{ $profil->nama_sekolah ?? 'SMA Nova Cendekia' }}</strong>.
                                 Kami berkomitmen untuk memberikan pendidikan yang berkualitas serta membentuk peserta didik
                                 yang unggul, berkarakter, berprestasi, dan siap menghadapi tantangan masa depan.
                             </p>
 
-                            <p class="text-secondary lh-lg mb-4">
+                            <p class="text-secondary mb-4">
                                 Semoga website ini dapat menjadi jendela informasi yang transparan serta bermanfaat bagi
                                 seluruh warga sekolah, orang tua, dan masyarakat luas.
                             </p>
@@ -90,7 +88,7 @@
                     <div class="p-3">
                         <i class="bi bi-mortarboard-fill fs-1 text-white"></i>
                         <h2 class="fw-bold mt-2">{{ $jumlahSiswa }}</h2>
-                        <p class="text-secondary mb-0">Siswa</p>
+                        <p class="text-secondary">Siswa</p>
                     </div>
                 </div>
 
@@ -98,7 +96,7 @@
                     <div class="p-3">
                         <i class="bi bi-person-workspace fs-1 text-white"></i>
                         <h2 class="fw-bold mt-2">{{ $jumlahGuru }}</h2>
-                        <p class="text-secondary mb-0">Guru</p>
+                        <p class="text-secondary">Guru</p>
                     </div>
                 </div>
 
@@ -106,7 +104,7 @@
                     <div class="p-3">
                         <i class="bi bi-trophy-fill fs-1 text-white"></i>
                         <h2 class="fw-bold mt-2">{{ $jumlahPrestasi }}</h2>
-                        <p class="text-secondary mb-0">Prestasi</p>
+                        <p class="text-secondary">Prestasi</p>
                     </div>
                 </div>
 
@@ -114,10 +112,9 @@
                     <div class="p-3">
                         <i class="bi bi-people-fill fs-1 text-white"></i>
                         <h2 class="fw-bold mt-2">{{ $jumlahEkstrakurikuler }}</h2>
-                        <p class="text-secondary mb-0">Ekstrakurikuler</p>
+                        <p class="text-secondary">Ekstrakurikuler</p>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
@@ -158,7 +155,7 @@
                         </div>
                     @endforelse
                 </div>
-                <div class="swiper-pagination mt-5"></div>
+                {{-- <div class="swiper-pagination mt-5"></div> --}}
             </div>
 
             <div class="text-center mt-5">
@@ -184,8 +181,8 @@
                 <div class="swiper-wrapper">
                     @forelse ($ekstrakurikuler as $ekskul)
                         <div class="swiper-slide">
-                            <a href="{{ route('ekstrakurikuler.detail', $ekskul->id) }}" class="text-decoration-none">
-                                <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden card-hover">
+                            <a href="{{ route('ekstrakurikuler.detail', $ekskul->slug) }}" class="text-decoration-none">
+                                <div class="activity-card">
                                     <div class="activity-image">
                                         <img src="{{ $ekskul->gambar ? asset('storage/' . $ekskul->gambar) : asset('assets/img/default.jpg') }}"
                                             alt="{{ $ekskul->nama_eskul }}" class="w-100 h-100 object-fit-cover">
@@ -234,24 +231,26 @@
                 <div class="swiper-wrapper">
                     @forelse ($prestasi as $prestasis)
                         <div class="swiper-slide">
-                            <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden card-hover">
-                                <div class="achievement-image">
-                                    <img src="{{ $prestasis->gambar ? asset('storage/' . $prestasis->gambar) : asset('assets/img/default.jpg') }}"
-                                        alt="{{ $prestasis->nama_prestasi }}" class="w-100 h-100 object-fit-cover">
+                            <a href="{{ route('prestasi.detail', $prestasis->slug) }}" class="text-decoration-none">
+                                <div class="activity-card">
+                                    <div class="achievement-image">
+                                        <img src="{{ $prestasis->gambar ? asset('storage/' . $prestasis->gambar) : asset('assets/img/default.jpg') }}"
+                                            alt="{{ $prestasis->nama_prestasi }}" class="w-100 h-100 object-fit-cover">
+                                    </div>
+                                    <div class="card-body p-4">
+                                        <span class="badge bg-primary-subtle text-primary mb-2">
+                                            <i class="bi bi-trophy-fill me-1"></i>
+                                            Prestasi
+                                        </span>
+                                        <h5 class="fw-bold">
+                                            {{ $prestasis->nama_prestasi }}
+                                        </h5>
+                                        <p class="text-muted small mb-0">
+                                            {{ $prestasis->deskripsi ?? '' }}
+                                        </p>
+                                    </div>
                                 </div>
-                                <div class="card-body p-4">
-                                    <span class="badge bg-primary-subtle text-primary mb-2">
-                                        <i class="bi bi-trophy-fill me-1"></i>
-                                        Prestasi
-                                    </span>
-                                    <h5 class="fw-bold">
-                                        {{ $prestasis->nama_prestasi }}
-                                    </h5>
-                                    <p class="text-muted small mb-0">
-                                        {{ $prestasis->deskripsi ?? '' }}
-                                    </p>
-                                </div>
-                            </div>
+                            </a>
                         </div>
                     @empty
                         <div class="col-12 text-center">
@@ -260,7 +259,6 @@
                     @endforelse
                 </div>
             </div>
-
 
             <div class="text-center mt-5">
                 <a href="{{ route('prestasi') }}" class="btn btn-primary rounded-pill">

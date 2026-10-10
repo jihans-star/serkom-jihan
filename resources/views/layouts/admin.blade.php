@@ -10,9 +10,8 @@
     <meta name="description" content="Sistem Informasi Manajemen Sekolah">
     <title>Sistem Informasi Cendekia</title>
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/vendors/bootstrap-icons/bootstrap-icons.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap-icons.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
 <body>

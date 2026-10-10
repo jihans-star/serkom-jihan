@@ -13,6 +13,7 @@ class Prestasi extends Model
 
     protected $fillable = [
         'nama_prestasi',
+        'slug',
         'kategori',
         'tingkat',
         'nama_peraih',

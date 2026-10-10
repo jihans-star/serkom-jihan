@@ -24,10 +24,10 @@ Route::get('/guru', [LandingPageController::class, 'guru'])->name('guru');
 Route::get('/guru/{id}', [LandingPageController::class, 'detailGuru'])->name('guru.detail');
 
 Route::get('/ekstrakurikuler', [LandingPageController::class, 'ekstrakurikuler'])->name('ekstrakurikuler');
-Route::get('/ekstrakurikuler{id}', [LandingPageController::class, 'detailEkstrakurikuler'])->name('ekstrakurikuler.detail');
+Route::get('/ekstrakurikuler/{slug}', [LandingPageController::class, 'detailEkstrakurikuler'])->name('ekstrakurikuler.detail');
 
 Route::get('/prestasi-sekolah', [LandingPageController::class, 'prestasi'])->name('prestasi');
-Route::get('/prestasi-sekolah/{id}', [LandingPageController::class, 'detailPrestasi'])->name('prestasi.detail');
+Route::get('/prestasi-sekolah/{slug}', [LandingPageController::class, 'detailPrestasi'])->name('prestasi.detail');
 
 Route::get('/galeri', [LandingPageController::class, 'galeri'])->name('galeri');
 Route::get('/galeri/{id}', [LandingPageController::class, 'detailGaleri'])->name('galeri.detail');

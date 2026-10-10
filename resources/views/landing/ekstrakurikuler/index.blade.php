@@ -13,8 +13,8 @@
             <div class="row g-4 mt-3">
                 @forelse ($ekstrakurikuler as $ekskul)
                     <div class="col-md-6 col-lg-4" data-aos="fade-up">
-                        <a href="{{ route('ekstrakurikuler.detail', $ekskul->id) }}">
-                            <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden card-hover">
+                        <a href="{{ route('ekstrakurikuler.detail', $ekskul->slug) }}">
+                            <div class="activity-card">
 
                                 <div class="activity-image">
                                     <img src="{{ $ekskul->gambar ? asset('storage/' . $ekskul->gambar) : asset('assets/img/default.jpg') }}"
