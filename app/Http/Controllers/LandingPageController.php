@@ -55,6 +55,12 @@ class LandingPageController extends Controller
         return view('landing.profil', compact('profil'));
     }
 
+    public function pembuat()
+    {
+        $profil = Profil_sekolah::first();
+        return view('landing.pembuat.index', compact('profil'));
+    }
+
     public function guru()
     {
         $profil = Profil_sekolah::first();

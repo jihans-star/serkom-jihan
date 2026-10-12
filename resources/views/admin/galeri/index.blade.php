@@ -97,7 +97,7 @@
                                     @endif
                                 </td>
                                 <td>
-                                    {{ \Carbon\Carbon::parse($item->tanggal)->format('d M, Y') }}
+                                    {{ $item->tanggal->format('d M, Y') }}
                                 </td>
                                 <td class="text-end">
                                     <div class="d-flex justify-content-end gap-1">

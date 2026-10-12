@@ -74,8 +74,6 @@ class BeritaController extends Controller
         return redirect()->route('admin.berita.index')->with('success', 'Berita berhasil ditambahkan');
     }
 
-    public function show(Berita $berita) {}
-
     public function edit(Berita $berita)
     {
         return view('admin.berita.edit', compact('berita'));

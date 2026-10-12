@@ -31,16 +31,16 @@ class StoreguruRequest extends FormRequest
         ];
     }
 
-    public function messages(): array
-    {
-        return [
-        'nama_guru.required' => 'Nama guru wajib diisi.',
-        'nip.required' => 'NIP wajib diisi.',
-        'nip.unique' => 'NIP sudah terdaftar. Gunakan NIP lain.',
-        'mapel.required' => 'Mata pelajaran wajib diisi.',
-        'foto.image' => 'File harus berupa gambar.',
-        'foto.mimes' => 'Foto harus berformat JPG, JPEG, atau PNG.',
-        'foto.max' => 'Ukuran foto maksimal 2 MB.',
-    ];
-    }
+    // public function messages(): array
+    // {
+    //     return [
+    //     'nama_guru.required' => 'Nama guru wajib diisi.',
+    //     'nip.required' => 'NIP wajib diisi.',
+    //     'nip.unique' => 'NIP sudah terdaftar. Gunakan NIP lain.',
+    //     'mapel.required' => 'Mata pelajaran wajib diisi.',
+    //     'foto.image' => 'File harus berupa gambar.',
+    //     'foto.mimes' => 'Foto harus berformat JPG, JPEG, atau PNG.',
+    //     'foto.max' => 'Ukuran foto maksimal 2 MB.',
+    // ];
+    // }
 }

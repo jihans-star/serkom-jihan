@@ -13,12 +13,20 @@ use App\Http\Controllers\ProfilSekolahController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 
 Route::get('/', [LandingPageController::class, 'index'])
     ->name('landing');
 
 Route::get('/profil', [LandingPageController::class, 'profil'])->name('profil');
 
+
+Route::get('/reset-limit-login', function (Request $request) {
+    $request->session()->forget('gagal_login');
+    return "Session gagal login berhasil dibersihkan! Silakan kembali ke halaman login.";
+});
+
+Route::get('/pembuat', [LandingPageController::class, 'pembuat'])->name('pembuat');
 
 Route::get('/guru', [LandingPageController::class, 'guru'])->name('guru');
 Route::get('/guru/{id}', [LandingPageController::class, 'detailGuru'])->name('guru.detail');

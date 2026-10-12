@@ -19,16 +19,12 @@
     @php
         $profil = \App\Models\Profil_sekolah::first();
     @endphp
-
     <div class="login-wrapper">
 
         <div class="login-image">
 
             @if ($profil && $profil->foto)
-                <img
-                    src="{{ asset('storage/' . $profil->foto) }}"
-                    alt="Foto Sekolah"
-                    class="login-bg">
+                <img src="{{ asset('storage/' . $profil->foto) }}" alt="Foto Sekolah" class="login-bg">
             @else
                 <div class="login-bg-default"></div>
             @endif
@@ -90,14 +86,8 @@
                         <div class="input-box">
                             <i class="icon-user"></i>
 
-                            <input
-                                type="text"
-                                name="username"
-                                id="username"
-                                class="form-control"
-                                placeholder="Masukkan username"
-                                value="{{ old('username') }}"
-                                required>
+                            <input type="text" name="username" id="username" class="form-control"
+                                placeholder="Masukkan username" value="{{ old('username') }}" required>
                         </div>
                     </div>
 
@@ -109,13 +99,8 @@
                         <div class="input-box">
                             <i class="icon-lock"></i>
 
-                            <input
-                                type="password"
-                                name="password"
-                                id="password"
-                                class="form-control"
-                                placeholder="Masukkan password"
-                                required>
+                            <input type="password" name="password" id="password" class="form-control"
+                                placeholder="Masukkan password" required>
                         </div>
                     </div>
 

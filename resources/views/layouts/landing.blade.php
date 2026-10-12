@@ -81,6 +81,12 @@
                             Berita
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{ route('pembuat') }}"
+                            class="nav-link {{ request()->routeIs('pembuat') ? 'active' : '' }}">
+                            Pembuat
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>

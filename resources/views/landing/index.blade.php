@@ -6,6 +6,24 @@
         </div>
 
         <div class="container">
+            @if (session('error'))
+                <div class="alert alert-danger alert-dismissible fade show border-0 shadow-sm rounded-4 py-3 px-4 d-flex align-items-center justify-content-between my-3"
+                    role="alert" style="background-color: #fff5f5; color: #9b2c2c;">
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="bg-danger text-white rounded-circle d-flex align-items-center justify-content-center"
+                            style="width: 36px; height: 36px; min-width: 36px;">
+                            <i class="bi bi-exclamation-triangle-fill fs-6"></i>
+                        </div>
+                        <div>
+                            <h6 class="fw-bold mb-0">Terjadi Kesalahan</h6>
+                            <p class="mb-0 small text-muted" style="color: #c53030 !important;">{{ session('error') }}</p>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-close shadow-none" data-bs-dismiss="alert"
+                        aria-label="Close"></button>
+                </div>
+            @endif
+
             <div class="row align-items-center">
                 <div class="col-lg-6" data-aos="fade-right">
                     <span class="hero-subtitle">SELAMAT DATANG DI</span>
@@ -282,37 +300,37 @@
 
             <div class="swiper slider mt-4" data-aos="fade-up">
                 <div class="swiper-wrapper">
-                @forelse ($galeri as $galeris)
-                    <div class="swiper-slide">
-                        <div class="activity-card">
-                            <div class="activity-image">
-                                @if ($galeris->kategori === 'Foto')
+                    @forelse ($galeri as $galeris)
+                        <div class="swiper-slide">
+                            <div class="activity-card">
+                                <div class="activity-image">
+                                    @if ($galeris->kategori === 'Foto')
+                                        <a href="{{ route('galeri.detail', $galeris->id) }}">
+                                            <img src="{{ $galeris->file ? asset('storage/' . $galeris->file) : asset('assets/img/default.jpg') }}"
+                                                alt="{{ $galeris->judul }}">
+                                        </a>
+                                    @elseif ($galeris->kategori === 'Video')
+                                        <video controls>
+                                            <source src="{{ asset('storage/' . $galeris->file) }}" type="video/mp4">
+                                            Browser kamu tidak mendukung pemutaran video.
+                                        </video>
+                                    @endif
+                                </div>
+
+                                <div class="activity-body">
                                     <a href="{{ route('galeri.detail', $galeris->id) }}">
-                                        <img src="{{ $galeris->file ? asset('storage/' . $galeris->file) : asset('assets/img/default.jpg') }}"
-                                            alt="{{ $galeris->judul }}">
+                                        <h4>{{ $galeris->judul }}</h4>
                                     </a>
-                                @elseif ($galeris->kategori === 'Video')
-                                    <video controls>
-                                        <source src="{{ asset('storage/' . $galeris->file) }}" type="video/mp4">
-                                        Browser kamu tidak mendukung pemutaran video.
-                                    </video>
-                                @endif
-                            </div>
 
-                            <div class="activity-body">
-                                <a href="{{ route('galeri.detail', $galeris->id) }}">
-                                    <h4>{{ $galeris->judul }}</h4>
-                                </a>
-
-                                <i class="bi bi-calendar-event me-2"></i>
-                                {{ $galeris->tanggal ? $galeris->tanggal->format('d M, Y') : '-' }}
+                                    <i class="bi bi-calendar-event me-2"></i>
+                                    {{ $galeris->tanggal ? $galeris->tanggal->format('d M, Y') : '-' }}
+                                </div>
                             </div>
                         </div>
-                    </div>
-                @empty
-                    <div class="col-12 text-center">
-                        <p>Belum ada data galeri.</p>
-                    </div>
+                    @empty
+                        <div class="col-12 text-center">
+                            <p>Belum ada data galeri.</p>
+                        </div>
                     @endforelse
                 </div>
             </div>
