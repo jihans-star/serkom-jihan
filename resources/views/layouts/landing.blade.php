@@ -96,19 +96,6 @@
                     <p>
                         {{ $profil->deskripsi ?? 'Membangun generasi unggul, berkarakter, dan berprestasi melalui pendidikan berkualitas.' }}
                     </p>
-                    <div class="social-links">
-                        <a href="mailto:info@smanovacendekia.sch.id" title="Email Sekolah">
-                            <i class="bi bi-envelope"></i>
-                        </a>
-
-                        <a href="https://wa.me/628xxxxxxxxxx" target="_blank" title="WhatsApp Sekolah">
-                            <i class="bi bi-whatsapp"></i>
-                        </a>
-
-                        <a href="https://maps.app.goo.gl/jVaVHpSjZc2uXEae8" target="_blank" title="Lokasi Sekolah">
-                            <i class="bi bi-geo-alt"></i>
-                        </a>
-                    </div>
                 </div>
 
                 <div class="col-lg-3">

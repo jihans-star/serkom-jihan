@@ -7,13 +7,21 @@ use App\Http\Requests\UpdateBeritaRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
 
 class BeritaController extends Controller
 {
     public function index()
     {
-        $data['beritas'] = Berita::with('user')->latest()->get();
-        return view('admin.berita.index', $data);
+        $beritas = Berita::with('user')->latest();
+
+        if (Auth::user()->role === 'Operator') {
+            $beritas->where('id_user', Auth::id());
+        }
+
+        return view('admin.berita.index', [
+            'beritas' => $beritas->get()
+        ]);
     }
 
     public function create()
@@ -33,7 +41,7 @@ class BeritaController extends Controller
             'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'status'  => 'required|in:Draft,Published',
             'slug' => 'required|unique:beritas,slug'
-        ],[
+        ], [
             'judul.unique' => 'Judul berita sudah digunakan. Silakan gunakan judul yang berbeda.',
             'judul.required' => 'Judul berita harus diisi.',
             'judul.max' => 'Judul berita tidak boleh lebih dari 50 karakter.',
@@ -47,7 +55,7 @@ class BeritaController extends Controller
             'slug.unique' => 'Slug berita sudah digunakan. Silakan gunakan judul yang berbeda.'
         ]);
 
-        if($request->hasFile('gambar')) {
+        if ($request->hasFile('gambar')) {
             $file = $request->file('gambar');
             $filename = $file->store('berita');
         } else {
@@ -66,10 +74,7 @@ class BeritaController extends Controller
         return redirect()->route('admin.berita.index')->with('success', 'Berita berhasil ditambahkan');
     }
 
-    public function show(Berita $berita)
-    {
-
-    }
+    public function show(Berita $berita) {}
 
     public function edit(Berita $berita)
     {

@@ -62,13 +62,17 @@
                         </div>
                         <div class="col-md-6">
                             <label class="form-label" for="tahun_masuk">Tahun Masuk</label>
+
                             <select class="form-select" id="tahun_masuk" name="tahun_masuk" required>
-                                <option value="" disabled selected>Pilih Tahun Masuk</option>
+                                <option value="">Pilih Tahun Masuk</option>
+
                                 @php
                                     $currentYear = date('Y');
+                                    $selectedYear = old('tahun_masuk', $siswa->tahun_masuk);
                                 @endphp
-                                @for ($year = $currentYear; $year >= $currentYear - 3; $year--)
-                                    <option value="{{ $year }}" {{ old('tahun_masuk') == $year ? 'selected' : '' }}>
+
+                                @for ($year = $currentYear; $year >= 2000; $year--)
+                                    <option value="{{ $year }}" {{ $selectedYear == $year ? 'selected' : '' }}>
                                         {{ $year }}
                                     </option>
                                 @endfor
