@@ -1,13 +1,13 @@
 :root {
-    --primary: #2563eb;
-    --primary-dark: #1d4ed8;
-    --dark: #0f172a;
-    --text: #334155;
-    --muted: #64748b;
-    --light: #f8fafc;
-    --border: #e2e8f0;
-    --white: #fff;
-    --shadow: 0 10px 30px rgba(15, 23, 42, .08);
+    --biru: #2563eb;
+    --biru-gelap: #1d4ed8;
+    --gelap: #0f172a;
+    --teks: #334155;
+    --abu: #64748b;
+    --terang: #f8fafc;
+    --garis: #e2e8f0;
+    --putih: #fff;
+    --bayangan: 0 10px 30px rgba(15, 23, 42, .1);
     --radius: 18px;
 }
 
@@ -21,7 +21,7 @@ html {
 
 body {
     font-family: "Inter", sans-serif;
-    color: var(--text);
+    color: var(--teks);
     line-height: 1.7;
 }
 
@@ -36,18 +36,18 @@ a {
 
 /* NAVBAR */
 .navbar {
-    background: rgba(255, 255, 255, .94);
+    background: rgba(255, 255, 255, .95);
     backdrop-filter: blur(14px);
     border-bottom: 1px solid rgba(226, 232, 240, .8);
 }
 
 .navbar-brand {
-    color: var(--dark) !important;
-    font-weight: 800;
-    font-size: 18.4px;
     display: flex;
     align-items: center;
     gap: 12px;
+    color: var(--gelap) !important;
+    font-size: 18px;
+    font-weight: 800;
 }
 
 .brand-icon img {
@@ -57,7 +57,7 @@ a {
 }
 
 .brand-name {
-    color: var(--dark);
+    color: var(--gelap);
 }
 
 .navbar-nav {
@@ -65,18 +65,18 @@ a {
 }
 
 .nav-link {
-    color: #475569 !important;
-    font-size: 14.72px;
-    font-weight: 600;
     padding: 8px 12px !important;
     border-radius: 8px;
-    transition: .25s;
+    color: #475569 !important;
+    font-size: 15px;
+    font-weight: 600;
+    transition: .3s;
 }
 
 .nav-link:hover,
 .nav-link.active {
-    color: var(--primary) !important;
-    background: rgba(37, 99, 235, .07);
+    color: var(--biru) !important;
+    background: rgba(37, 99, 235, .1);
 }
 
 .navbar-toggler {
@@ -84,22 +84,21 @@ a {
     box-shadow: none !important;
 }
 
-/* HERO SECTION */
 .hero-section {
     min-height: 100vh;
     position: relative;
     display: flex;
     align-items: center;
     overflow: hidden;
-    background: var(--light);
     padding-top: 60px;
+    background: var(--terang);
 }
 
 .hero-background {
     position: absolute;
     top: 0;
     right: 0;
-    width: 58%;
+    width: 60%;
     height: 100%;
     background-size: cover;
     background-position: center;
@@ -109,7 +108,7 @@ a {
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(to right, var(--light), transparent);
+    background: linear-gradient(to right, var(--terang), transparent);
 }
 
 .hero-section .container {
@@ -120,37 +119,36 @@ a {
 .hero-subtitle,
 .section-subtitle {
     display: inline-block;
-    color: var(--primary);
-    font-size: 12.48px;
+    margin-bottom: 8px;
+    color: var(--biru);
+    font-size: 12px;
     font-weight: 800;
     letter-spacing: 2px;
-    margin-bottom: 8px;
 }
 
 .hero-section h1 {
     max-width: 700px;
-    color: var(--dark);
-    font-size: clamp(40px, 5vw, 70.4px);
-    font-weight: 800;
-    line-height: 1.08;
-    letter-spacing: -2px;
     margin-bottom: 20px;
+    color: var(--gelap);
+    font-size: clamp(40px, 5vw, 70px);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -2px;
 }
 
 .hero-section p {
     max-width: 580px;
-    color: var(--muted);
-    font-size: 16.8px;
-    margin-bottom: 28px;
+    margin-bottom: 30px;
+    color: var(--abu);
+    font-size: 17px;
 }
 
 .hero-buttons {
     display: flex;
-    gap: 10px;
     flex-wrap: wrap;
+    gap: 10px;
 }
 
-/* GENERAL SECTION */
 .section-padding {
     padding: 90px 0;
 }
@@ -161,34 +159,33 @@ a {
 }
 
 .section-title {
-    color: var(--dark);
-    font-size: clamp(32px, 4vw, 43.2px);
+    margin-bottom: 10px;
+    color: var(--gelap);
+    font-size: clamp(32px, 4vw, 44px);
     font-weight: 800;
     letter-spacing: -1px;
-    margin-bottom: 10px;
 }
 
 .section-heading p,
 .profile-description {
-    color: var(--muted);
+    color: var(--abu);
 }
 
-/* BUTTON */
 .btn {
     padding: 10px 20px;
     border-radius: 10px;
     font-weight: 600;
-    transition: .25s;
+    transition: .3s;
 }
 
 .btn-primary {
-    background: var(--primary);
-    border-color: var(--primary);
+    background: var(--biru);
+    border-color: var(--biru);
 }
 
 .btn-primary:hover {
-    background: var(--primary-dark);
-    border-color: var(--primary-dark);
+    background: var(--biru-gelap);
+    border-color: var(--biru-gelap);
     transform: translateY(-2px);
     box-shadow: 0 8px 20px rgba(37, 99, 235, .2);
 }
@@ -197,16 +194,16 @@ a {
     transform: translateY(-2px);
 }
 
-/* PROFILE */
+/* PROFIL SEKOLAH */
 .principal-card {
     display: flex;
     align-items: center;
-    gap: 22px;
-    padding: 22px;
-    background: var(--white);
-    border: 1px solid var(--border);
+    gap: 20px;
+    padding: 20px;
+    background: var(--putih);
+    border: 1px solid var(--garis);
     border-radius: var(--radius);
-    box-shadow: var(--shadow);
+    box-shadow: var(--bayangan);
 }
 
 .principal-card img {
@@ -217,7 +214,7 @@ a {
 }
 
 .principal-info h3 {
-    color: var(--dark);
+    color: var(--gelap);
     font-size: 20px;
     font-weight: 800;
 }
@@ -231,13 +228,13 @@ a {
 .info-item {
     display: flex;
     align-items: center;
-    gap: 13px;
-    padding: 17px;
-    background: var(--white);
-    border: 1px solid var(--border);
+    gap: 12px;
+    padding: 16px;
+    background: var(--putih);
+    border: 1px solid var(--garis);
     border-radius: 14px;
-    box-shadow: var(--shadow);
-    transition: .25s;
+    box-shadow: var(--bayangan);
+    transition: .3s;
 }
 
 .info-item:hover {
@@ -245,68 +242,68 @@ a {
 }
 
 .info-item > i {
+    display: grid;
+    place-items: center;
     width: 42px;
     height: 42px;
     min-width: 42px;
-    display: grid;
-    place-items: center;
-    color: var(--primary);
-    background: rgba(37, 99, 235, .08);
+    color: var(--biru);
+    background: rgba(37, 99, 235, .1);
     border-radius: 10px;
 }
 
 .info-item small {
     display: block;
-    color: var(--muted);
+    color: var(--abu);
     font-size: 12px;
 }
 
 .info-item h5 {
-    color: var(--dark);
-    font-size: 14.4px;
-    font-weight: 700;
     margin: 0;
+    color: var(--gelap);
+    font-size: 14px;
+    font-weight: 700;
 }
 
-/* STATS */
+/* STATISTIK */
 .stats-section {
     padding: 65px 0;
-    background: var(--dark);
+    background: var(--gelap);
 }
 
 .stat-item {
-    color: var(--white);
+    color: var(--putih);
 }
 
 .stat-item i {
     display: block;
+    margin-bottom: 8px;
     color: #60a5fa;
     font-size: 32px;
-    margin-bottom: 8px;
 }
 
 .stat-item h2 {
-    font-size: 38.4px;
-    font-weight: 800;
     margin: 0;
+    font-size: 38px;
+    font-weight: 800;
 }
 
 .stat-item p {
-    color: #94a3b8;
     margin: 2px 0 0;
+    color: #94a3b8;
 }
 
-/* CARDS */
+/* KARTU KONTEN */
 .teacher-card,
 .activity-card,
 .achievement-card,
 .news-card {
     height: 100%;
     overflow: hidden;
-    background: var(--white);
-    border: 1px solid var(--border);
+    background: var(--putih);
+    border: 1px solid var(--garis);
     border-radius: var(--radius);
-    box-shadow: var(--shadow);
+    box-shadow: var(--bayangan);
     transition: .3s ease;
 }
 
@@ -315,14 +312,20 @@ a {
 .achievement-card:hover,
 .news-card:hover {
     transform: translateY(-7px);
-    box-shadow: 0 18px 40px rgba(15, 23, 42, .12);
+    box-shadow: 0 18px 40px rgba(15, 23, 42, .1);
 }
 
 .teacher-image {
     height: 410px;
 }
 
-.activity-image,
+.activity-image {
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    border-radius: 16px 16px 0 0;
+}
+
 .news-image {
     height: 225px;
 }
@@ -333,11 +336,18 @@ a {
 
 .teacher-image img,
 .activity-image img,
+.activity-image video,
 .achievement-image img,
 .news-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+.teacher-image img,
+.activity-image img,
+.achievement-image img,
+.news-image img {
     transition: .5s;
 }
 
@@ -346,6 +356,11 @@ a {
 .achievement-card:hover img,
 .news-card:hover img {
     transform: scale(1.05);
+}
+
+.activity-image video {
+    display: block;
+    background: #000;
 }
 
 .teacher-body,
@@ -359,57 +374,57 @@ a {
 .activity-body h4,
 .achievement-body h4,
 .news-body h4 {
-    color: var(--dark);
-    font-size: 17.6px;
-    font-weight: 750;
     margin-bottom: 7px;
+    color: var(--gelap);
+    font-size: 18px;
+    font-weight: 750;
 }
 
 .teacher-body p {
-    color: var(--primary);
     margin: 0;
+    color: var(--biru);
 }
 
 .activity-body p,
 .achievement-body p,
 .news-body p {
-    color: var(--muted);
-    font-size: 14.4px;
     margin: 0;
+    color: var(--abu);
+    font-size: 14px;
 }
 
 .achievement-badge {
     display: inline-block;
-    padding: 4px 10px;
     margin-bottom: 10px;
-    color: var(--primary);
-    background: rgba(37, 99, 235, .08);
+    padding: 4px 10px;
+    color: var(--biru);
+    background: rgba(37, 99, 235, .1);
     border-radius: 50px;
-    font-size: 11.52px;
+    font-size: 12px;
     font-weight: 700;
 }
 
 .news-body small {
-    color: var(--primary);
+    color: var(--biru);
     font-weight: 600;
 }
 
 /* FOOTER */
 .footer-section {
     padding-top: 70px;
-    background: var(--dark);
     color: #cbd5e1;
+    background: var(--gelap);
 }
 
 .footer-section h4,
 .footer-section h5 {
-    color: var(--white);
+    color: var(--putih);
     font-weight: 800;
 }
 
 .footer-section p {
     color: #94a3b8;
-    font-size: 14.4px;
+    font-size: 14px;
 }
 
 .footer-menu,
@@ -425,12 +440,12 @@ a {
 
 .footer-menu a {
     color: #94a3b8;
-    font-size: 14.4px;
-    transition: .2s;
+    font-size: 14px;
+    transition: .3s;
 }
 
 .footer-menu a:hover {
-    color: var(--white);
+    color: var(--putih);
 }
 
 .contact-list li {
@@ -438,7 +453,7 @@ a {
     gap: 10px;
     margin-bottom: 12px;
     color: #94a3b8;
-    font-size: 14.4px;
+    font-size: 14px;
 }
 
 .contact-list i {
@@ -448,33 +463,13 @@ a {
 .footer-bottom {
     margin-top: 50px;
     padding: 20px 0;
-    border-top: 1px solid rgba(255, 255, 255, .08);
+    border-top: 1px solid rgba(255, 255, 255, .1);
     text-align: center;
 }
 
 .footer-bottom p {
     margin: 0;
-    font-size: 12.8px;
-}
-
-/* ACTIVITY IMAGE & VIDEO */
-.activity-image {
-    width: 100%;
-    height: 250px;
-    overflow: hidden;
-    border-radius: 16px 16px 0 0;
-}
-
-.activity-image img,
-.activity-image video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.activity-image video {
-    display: block;
-    background: #000;
+    font-size: 13px;
 }
 
 /* TABLET */
@@ -522,7 +517,7 @@ a {
     }
 
     .hero-section p {
-        font-size: 15.2px;
+        font-size: 15px;
     }
 
     .teacher-image {
