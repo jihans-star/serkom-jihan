@@ -41,12 +41,10 @@
             <div class="card border-0 shadow-sm rounded-4 overflow-hidden p-4 p-lg-5">
                 <div class="row align-items-center g-5">
                     <div class="col-lg-4 text-center text-lg-start" data-aos="fade-right">
-                        <div class="d-inline-block">
-                            <img src="{{ $profil->foto_kepala_sekolah ? asset('storage/' . $profil->foto_kepala_sekolah) : asset('assets/img/default-user.jpg') }}"
-                                alt="{{ $profil->kepala_sekolah ?? 'Kepala Sekolah' }}"
-                                class="img-fluid rounded-4 shadow-sm w-100 object-fit-cover m-auto"
-                                style="max-width: 350px; height: 420px;">
-                        </div>
+                        <img src="{{ $profil->foto_kepala_sekolah ? asset('storage/' . $profil->foto_kepala_sekolah) : asset('assets/img/default-user.jpg') }}"
+                            alt="{{ $profil->kepala_sekolah ?? 'Kepala Sekolah' }}"
+                            class="img-fluid rounded-4 shadow-sm w-100 object-fit-cover m-auto"
+                            style="max-width: 350px; height: 420px;">
 
                         <div class="mt-3 text-center">
                             <h4 class="fw-bold mb-0 text-dark">

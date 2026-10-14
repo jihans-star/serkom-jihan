@@ -23,7 +23,7 @@
                     </div>
                 </div>
 
-                <div class="col-lg-4 mt-5 mt-lg-0" data-aos="fade-up">
+                <div class="col-lg-4 mt-5" data-aos="fade-up">
                     <div class="card border-0 shadow-sm rounded-4 bg-light overflow-hidden">
                         <div class="card-header bg-white border-bottom py-3 px-4">
                             <h5 class="mb-0 fw-bold text-dark d-flex align-items-center">
@@ -32,18 +32,18 @@
                         </div>
 
                         <div class="card-body p-3">
-                            <div class="list-group list-group-flush bg-transparent">
+                            <div class="list-group">
                                 @foreach ($beritaLainnya as $item)
                                     <a href="{{ route('berita.detail', $item->slug) }}"
-                                        class="list-group-item list-group-item-action bg-white border-0 mb-2 shadow-xs rounded-3 p-3 transition-all hover-shadow">
+                                        class="list-group-item bg-white border-0 mb-2 shadow-xs rounded-3 p-3">
                                         <div class="d-flex align-items-center">
                                             @if ($item->gambar)
                                                 <img src="{{ asset('storage/' . $item->gambar) }}" alt="{{ $item->judul }}"
                                                     class="rounded-3 me-3 flex-shrink-0 object-fit-cover" height="60"
                                                     width="60">
                                             @endif
-                                            <div class="flex-grow-1">
-                                                <h6 class="mb-1 text-dark fw-semibold lh-sm" style="font-size: 13.5px;">
+                                            <div>
+                                                <h6 class="mb-1 text-dark fw-semibold" style="font-size: 13px;">
                                                     {{ Str::limit($item->judul, 40) }}
                                                 </h6>
                                                 <small class="text-muted d-flex align-items-center" style="font-size: 12px;">

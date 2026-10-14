@@ -77,7 +77,7 @@
                     </li>
                     <li class="nav-item">
                         <a href="{{ route('berita') }}"
-                            class="nav-link {{ request()->routeIs('berita','berita.indexs') ? 'active' : '' }}">
+                            class="nav-link {{ request()->routeIs('berita','berita.detail') ? 'active' : '' }}">
                             Berita
                         </a>
                     </li>

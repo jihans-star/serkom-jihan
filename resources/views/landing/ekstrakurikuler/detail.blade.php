@@ -30,7 +30,7 @@
 
                         <div class="pt-3 border-top mt-5">
                             <a href="{{ route('ekstrakurikuler') }}"
-                                class="text-decoration-none text-primary fw-semibold d-inline-flex align-items-center">
+                                class="text-decoration-none text-primary fw-semibold">
                                 <i class="bi bi-arrow-left me-2"></i> Kembali ke Daftar Ekstrakurikuler
                             </a>
                         </div>
@@ -58,8 +58,8 @@
                                                     class="rounded-3 me-3 flex-shrink-0 object-fit-cover shadow-xs"
                                                     height="60" width="60">
                                             @endif
-                                            <div class="flex-grow-1">
-                                                <h6 class="mb-1 text-dark fw-semibold lh-sm" style="font-size: 13.5px;">
+                                            <div>
+                                                <h6 class="mb-1 text-dark fw-semibold" style="font-size: 13.5px;">
                                                     {{ Str::limit($item->nama_eskul, 38) }}
                                                 </h6>
                                                 <small class="text-muted d-flex align-items-center"
