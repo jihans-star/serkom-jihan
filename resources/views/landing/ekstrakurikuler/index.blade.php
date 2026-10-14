@@ -13,25 +13,25 @@
             <div class="row g-4 mt-3">
                 @forelse ($ekstrakurikuler as $ekskul)
                     <div class="col-md-6 col-lg-4" data-aos="fade-up">
-                        <a href="{{ route('ekstrakurikuler.detail', $ekskul->slug) }}">
-                            <div class="activity-card">
+                        <div class="swiper-slide">
+                            <a href="{{ route('ekstrakurikuler.detail', $ekskul->slug) }}" class="text-decoration-none">
+                                <div class="activity-card">
+                                    <div class="activity-image">
+                                        <img src="{{ $ekskul->gambar ? asset('storage/' . $ekskul->gambar) : asset('assets/img/default.jpg') }}"
+                                            alt="{{ $ekskul->nama_eskul }}" class="w-100 h-100 object-fit-cover">
+                                    </div>
 
-                                <div class="activity-image">
-                                    <img src="{{ $ekskul->gambar ? asset('storage/' . $ekskul->gambar) : asset('assets/img/default.jpg') }}"
-                                        alt="{{ $ekskul->nama_eskul }}" class="w-100 h-100 object-fit-cover">
+                                    <div class="card-body p-4">
+                                        <h5 class="fw-bold">
+                                            {{ $ekskul->nama_eskul }}
+                                        </h5>
+                                        <p class="text-muted small mb-0">
+                                            {{ $ekskul->deskripsi }}
+                                        </p>
+                                    </div>
                                 </div>
-
-                                <div class="card-body p-4">
-                                    <h5 class="fw-bold">
-                                        {{ $ekskul->nama_eskul }}
-                                    </h5>
-
-                                    <p class="text-muted small mb-0">
-                                        {{ $ekskul->deskripsi }}
-                                    </p>
-                                </div>
-                            </div>
-                        </a>
+                            </a>
+                        </div>
                     </div>
                 @empty
                     <div class="col-12 text-center">

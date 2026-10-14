@@ -29,17 +29,23 @@
             <div class="row g-4 mt-3">
                 @forelse ($berita as $beritas)
                     <div class="col-md-6 col-lg-4" data-aos="fade-up">
-                        <a href="{{ route('berita.detail', $beritas->slug) }}" >
-                            <div class="activity-card">
-                                <div class="activity-image">
-                                    <img src="{{ $beritas->gambar ? asset('storage/' . $beritas->gambar) : asset('assets/img/default-user.jpg') }}"
+                        <a href="{{ route('berita.detail', $beritas->slug) }}">
+                            <div class="news-card">
+                                <div class="news-image">
+                                    <img src="{{ $beritas->gambar ? asset('storage/' . $beritas->gambar) : asset('assets/img/default.jpg') }}"
                                         alt="{{ $beritas->judul }}">
                                 </div>
 
-                                <div class="card-body p-4">
-                                    <h6 class="fw-bold text-dark">{{ $beritas->judul }}</h6>
-                                    <p class="text-muted small mb-0">
-                                        <i class="bi bi-calendar-event me-2"></i>{{ $beritas->tanggal->format('d M, Y') }}
+                                <div class="news-body">
+                                    <small>
+                                        <i class="bi bi-calendar-event me-2"></i>
+                                        {{ $beritas->tanggal ? $beritas->tanggal->format('d M, Y') : '-' }}
+                                    </small>
+
+                                    <h4>{{ $beritas->judul }}</h4>
+
+                                    <p>
+                                        {{ Str::limit(strip_tags($beritas->isi), 100) }}
                                     </p>
                                 </div>
                             </div>

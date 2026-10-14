@@ -13,27 +13,24 @@
             <div class="row g-4 mt-3">
                 @forelse ($prestasi as $prestasis)
                     <div class="col-md-6 col-lg-4" data-aos="fade-up">
-                        <a href="{{ route('prestasi.detail', $prestasis->slug) }}">
-                            <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden card-hover">
-                                <div class="achievement-image">
-                                    <img src="{{ $prestasis->gambar ? asset('storage/' . $prestasis->gambar) : asset('assets/img/default.jpg') }}"
-                                        alt="{{ $prestasis->nama_prestasi }}" class="w-100 h-100 object-fit-cover">
+                        <div class="swiper-slide">
+                            <a href="{{ route('prestasi.detail', $prestasis->slug) }}" class="text-decoration-none">
+                                <div class="activity-card">
+                                    <div class="achievement-image">
+                                        <img src="{{ $prestasis->gambar ? asset('storage/' . $prestasis->gambar) : asset('assets/img/default.jpg') }}"
+                                            alt="{{ $prestasis->nama_prestasi }}" class="w-100 h-100 object-fit-cover">
+                                    </div>
+                                    <div class="card-body p-4">
+                                        <h5 class="fw-bold">
+                                            {{ $prestasis->nama_prestasi }}
+                                        </h5>
+                                        <p class="text-muted small mb-0">
+                                            {{ $prestasis->deskripsi ?? '' }}
+                                        </p>
+                                    </div>
                                 </div>
-
-                                <div class="card-body p-4">
-                                    <span class="badge bg-primary-subtle text-primary mb-2">
-                                        <i class="bi bi-trophy-fill me-1"></i>
-                                        Prestasi
-                                    </span>
-                                    <h5 class="fw-bold">
-                                        {{ $prestasis->nama_prestasi }}
-                                    </h5>
-                                    <p class="text-muted small mb-0">
-                                        {{ $prestasis->deskripsi ?? '' }}
-                                    </p>
-                                </div>
-                            </div>
-                        </a>
+                            </a>
+                        </div>
                     </div>
                 @empty
                     <div class="col-12 text-center">

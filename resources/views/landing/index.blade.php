@@ -256,10 +256,6 @@
                                             alt="{{ $prestasis->nama_prestasi }}" class="w-100 h-100 object-fit-cover">
                                     </div>
                                     <div class="card-body p-4">
-                                        <span class="badge bg-primary-subtle text-primary mb-2">
-                                            <i class="bi bi-trophy-fill me-1"></i>
-                                            Prestasi
-                                        </span>
                                         <h5 class="fw-bold">
                                             {{ $prestasis->nama_prestasi }}
                                         </h5>

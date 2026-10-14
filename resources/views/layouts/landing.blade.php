@@ -167,16 +167,7 @@
     <script src="{{ asset('assets/js/aos.js') }}"></script>
     <script src="{{ asset('assets/js/swiper-bundle.min.js') }}"></script>
     <script src="{{ asset('assets/js/slider.js') }}"></script>
-
-    <script>
-        AOS.init({
-            duration: 800,
-            once: true,
-            offset: 100
-        });
-    </script>
-
-    @stack('scripts')
+    <script src="{{ asset('assets/js/aos.init.js') }}"></script>
 </body>
 
 </html>
